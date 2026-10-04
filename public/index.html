@@ -1,375 +1,436 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blindspot — See what your reasoning might be missing</title>
-  <meta name="description" content="Blindspot helps you identify blind spots, assumptions, and overlooked factors in your reasoning — without making the decision for you." />
-  <meta name="theme-color" content="#F8F7F4" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blindspot — See what your reasoning might be missing</title>
+    <meta
+      name="description"
+      content="Blindspot helps you identify blind spots, assumptions, and overlooked factors in your reasoning — without making the decision for you."
+    />
+    <meta name="theme-color" content="#F8F7F4" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/css/reset.css" />
-  <link rel="stylesheet" href="/css/tokens.css" />
-  <link rel="stylesheet" href="/css/layout.css" />
-  <link rel="stylesheet" href="/css/components.css" />
-  <link rel="stylesheet" href="/css/xray.css" />
-  <link rel="stylesheet" href="/css/reflection.css" />
-</head>
-<body>
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/xray.css" />
+    <link rel="stylesheet" href="/css/reflection.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- NAV                                                            -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<header role="banner">
-  <nav class="nav" aria-label="Main navigation">
-    <div class="container nav__inner">
-      <a href="/" class="nav__logo" aria-label="Blindspot — home">
-        <span class="nav__logo-dot" aria-hidden="true"></span>
-        Blindspot
-      </a>
-      <span class="nav__tagline" aria-hidden="true">Reasoning Analysis</span>
-    </div>
-  </nav>
-</header>
-
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- SECTION 1 — HERO / LANDING                                     -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<main id="main-content">
-<section class="section hero" aria-labelledby="hero-heading">
-  <div class="container">
-
-    <div class="hero__eyebrow" aria-label="AI-powered reasoning analysis tool">
-      <span aria-hidden="true">◎</span>
-      Reasoning Analysis
-    </div>
-
-    <h1 class="hero__headline" id="hero-heading">
-      Before you decide,<br>
-      see what you're <em>missing</em>.
-    </h1>
-
-    <p class="hero__subheadline">
-      Blindspot analyses your reasoning — not your decision. It surfaces blind spots, 
-      assumptions, and overlooked factors so you can think more clearly.
-    </p>
-
-    <div class="hero__cta-group">
-      <button
-        id="btn-analyze-hero"
-        class="btn btn--primary btn--lg"
-        type="button"
-        aria-label="Start analysing a decision"
-      >
-        Analyse a decision →
-      </button>
-      <button
-        id="btn-try-example"
-        class="btn btn--ghost"
-        type="button"
-        aria-label="Try with an example — internship decision"
-      >
-        Try an example
-      </button>
-      <p class="hero__disclaimer">The AI will never tell you what to decide.</p>
-    </div>
-
-    <!-- How it works — visual flow -->
-    <div class="hero-flow" role="list" aria-label="How Blindspot works">
-      <div class="hero-flow__step" role="listitem">
-        <span class="hero-flow__icon" aria-hidden="true">✍</span>
-        <span class="hero-flow__label">You share</span>
-        <span class="hero-flow__value">Your decision & reasoning</span>
-      </div>
-      <span class="hero-flow__arrow" aria-hidden="true">→</span>
-      <div class="hero-flow__step" role="listitem">
-        <span class="hero-flow__icon" aria-hidden="true">◎</span>
-        <span class="hero-flow__label">AI analyses</span>
-        <span class="hero-flow__value">Blind spots & assumptions</span>
-      </div>
-      <span class="hero-flow__arrow" aria-hidden="true">→</span>
-      <div class="hero-flow__step" role="listitem">
-        <span class="hero-flow__icon" aria-hidden="true">↗</span>
-        <span class="hero-flow__label">You see</span>
-        <span class="hero-flow__value">What you may be missing</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- SECTION 2 — DECISION CANVAS                                    -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<section
-  id="canvas-section"
-  class="section canvas-section"
-  aria-labelledby="canvas-heading"
->
-  <div class="container container--md">
-
-    <div class="canvas-section__header">
-      <div class="section-label" aria-hidden="true">Step 1</div>
-      <h2 class="section-title" id="canvas-heading">Your Decision Canvas</h2>
-      <p class="section-subtitle">
-        Describe your decision and share your current thinking. 
-        Be as specific or as broad as you like — the more context, the deeper the analysis.
-      </p>
-    </div>
-
-    <form id="decision-form" novalidate aria-label="Decision analysis form">
-
-      <!-- Decision -->
-      <div class="field">
-        <label class="field__label" for="field-decision">
-          What are you deciding?
-          <span class="field__required" aria-label="required">*</span>
-        </label>
-        <p class="field__hint" id="hint-decision">
-          Describe the choice you are facing. E.g., "Whether to accept a job offer in another city."
-        </p>
-        <textarea
-          id="field-decision"
-          class="field__textarea"
-          name="decision"
-          rows="2"
-          placeholder="Describe the decision you're facing…"
-          aria-required="true"
-          aria-invalid="false"
-          aria-describedby="hint-decision error-decision counter-decision"
-          maxlength="2000"
-        ></textarea>
-        <div class="field__footer">
-          <span id="error-decision" class="field__error" role="alert" aria-live="polite"></span>
-          <span id="counter-decision" class="field__counter" aria-live="polite" aria-atomic="true">0 / 2000</span>
-        </div>
-      </div>
-
-      <!-- Reasoning -->
-      <div class="field">
-        <label class="field__label" for="field-reasoning">
-          What is your current reasoning?
-          <span class="field__required" aria-label="required">*</span>
-        </label>
-        <p class="field__hint" id="hint-reasoning">
-          Explain why you're leaning the way you are. What factors matter to you?
-        </p>
-        <textarea
-          id="field-reasoning"
-          class="field__textarea"
-          name="reasoning"
-          rows="5"
-          placeholder="Share your current thinking and what's influencing you…"
-          aria-required="true"
-          aria-invalid="false"
-          aria-describedby="hint-reasoning error-reasoning counter-reasoning"
-          maxlength="2000"
-        ></textarea>
-        <div class="field__footer">
-          <span id="error-reasoning" class="field__error" role="alert" aria-live="polite"></span>
-          <span id="counter-reasoning" class="field__counter" aria-live="polite" aria-atomic="true">0 / 2000</span>
-        </div>
-      </div>
-
-      <!-- Basis -->
-      <div class="field">
-        <label class="field__label" for="field-basis">
-          What information are you basing this on?
-          <span class="field__optional">(optional)</span>
-        </label>
-        <p class="field__hint" id="hint-basis">
-          What sources, data, or conversations have shaped your view?
-        </p>
-        <textarea
-          id="field-basis"
-          class="field__textarea"
-          name="basis"
-          rows="3"
-          placeholder="E.g., salary research, advice from a friend, company reviews…"
-          aria-describedby="hint-basis counter-basis"
-          maxlength="2000"
-        ></textarea>
-        <div class="field__footer">
-          <span id="counter-basis" class="field__counter" aria-live="polite" aria-atomic="true">0 / 2000</span>
-        </div>
-      </div>
-
-      <!-- Uncertainty -->
-      <div class="field">
-        <label class="field__label" for="field-uncertainty">
-          What are you uncertain about?
-          <span class="field__optional">(optional)</span>
-        </label>
-        <p class="field__hint" id="hint-uncertainty">
-          Any doubts, gaps in knowledge, or things you can't predict?
-        </p>
-        <textarea
-          id="field-uncertainty"
-          class="field__textarea"
-          name="uncertainty"
-          rows="2"
-          placeholder="E.g., I'm unsure how the team culture actually is…"
-          aria-describedby="hint-uncertainty counter-uncertainty"
-          maxlength="2000"
-        ></textarea>
-        <div class="field__footer">
-          <span id="counter-uncertainty" class="field__counter" aria-live="polite" aria-atomic="true">0 / 2000</span>
-        </div>
-      </div>
-
-      <!-- Error banner -->
-      <div
-        id="error-banner"
-        class="error-banner"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <span class="error-banner__icon" aria-hidden="true">⚠</span>
-        <div>
-          <span id="error-banner-text" class="error-banner__text"></span>
-          <button
-            id="btn-retry"
-            class="error-banner__retry"
-            type="button"
-            aria-label="Retry the analysis"
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- NAV                                                            -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <header role="banner">
+      <nav class="nav" aria-label="Main navigation">
+        <div class="container nav__inner">
+          <a href="/" class="nav__logo" aria-label="Blindspot — home">
+            <span class="nav__logo-dot" aria-hidden="true"></span>
+            Blindspot
+          </a>
+          <span class="nav__tagline" aria-hidden="true"
+            >Reasoning Analysis</span
           >
-            Try again
-          </button>
         </div>
-      </div>
+      </nav>
+    </header>
 
-      <!-- Submit -->
-      <div class="form__footer">
-        <button
-          id="btn-submit"
-          class="btn btn--primary btn--lg"
-          type="submit"
-          aria-label="Analyse my reasoning for blind spots and assumptions"
-        >
-          <span
-            id="btn-submit-spinner"
-            class="btn__spinner"
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 1 — HERO / LANDING                                     -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <main id="main-content">
+      <section class="section hero" aria-labelledby="hero-heading">
+        <div class="container">
+          <div
+            class="hero__eyebrow"
+            aria-label="AI-powered reasoning analysis tool"
+          >
+            <span aria-hidden="true">◎</span>
+            Reasoning Analysis
+          </div>
+
+          <h1 class="hero__headline" id="hero-heading">
+            Before you decide,<br />
+            see what you're <em>missing</em>.
+          </h1>
+
+          <p class="hero__subheadline">
+            Blindspot analyses your reasoning — not your decision. It surfaces
+            blind spots, assumptions, and overlooked factors so you can think
+            more clearly.
+          </p>
+
+          <div class="hero__cta-group">
+            <button
+              id="btn-analyze-hero"
+              class="btn btn--primary btn--lg"
+              type="button"
+              aria-label="Start analysing a decision"
+            >
+              Analyse a decision →
+            </button>
+            <button
+              id="btn-try-example"
+              class="btn btn--ghost"
+              type="button"
+              aria-label="Try with an example — internship decision"
+            >
+              Try an example
+            </button>
+            <p class="hero__disclaimer">
+              The AI will never tell you what to decide.
+            </p>
+          </div>
+
+          <!-- How it works — visual flow -->
+          <div class="hero-flow" role="list" aria-label="How Blindspot works">
+            <div class="hero-flow__step" role="listitem">
+              <span class="hero-flow__icon" aria-hidden="true">✍</span>
+              <span class="hero-flow__label">You share</span>
+              <span class="hero-flow__value">Your decision & reasoning</span>
+            </div>
+            <span class="hero-flow__arrow" aria-hidden="true">→</span>
+            <div class="hero-flow__step" role="listitem">
+              <span class="hero-flow__icon" aria-hidden="true">◎</span>
+              <span class="hero-flow__label">AI analyses</span>
+              <span class="hero-flow__value">Blind spots & assumptions</span>
+            </div>
+            <span class="hero-flow__arrow" aria-hidden="true">→</span>
+            <div class="hero-flow__step" role="listitem">
+              <span class="hero-flow__icon" aria-hidden="true">↗</span>
+              <span class="hero-flow__label">You see</span>
+              <span class="hero-flow__value">What you may be missing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- SECTION 2 — DECISION CANVAS                                    -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <section
+        id="canvas-section"
+        class="section canvas-section"
+        aria-labelledby="canvas-heading"
+      >
+        <div class="container container--md">
+          <div class="canvas-section__header">
+            <div class="section-label" aria-hidden="true">Step 1</div>
+            <h2 class="section-title" id="canvas-heading">
+              Your Decision Canvas
+            </h2>
+            <p class="section-subtitle">
+              Describe your decision and share your current thinking. Be as
+              specific or as broad as you like — the more context, the deeper
+              the analysis.
+            </p>
+          </div>
+
+          <form
+            id="decision-form"
+            novalidate
+            aria-label="Decision analysis form"
+          >
+            <!-- Decision -->
+            <div class="field">
+              <label class="field__label" for="field-decision">
+                What are you deciding?
+                <span class="field__required" aria-label="required">*</span>
+              </label>
+              <p class="field__hint" id="hint-decision">
+                Describe the choice you are facing. E.g., "Whether to accept a
+                job offer in another city."
+              </p>
+              <textarea
+                id="field-decision"
+                class="field__textarea"
+                name="decision"
+                rows="2"
+                placeholder="Describe the decision you're facing…"
+                aria-required="true"
+                aria-invalid="false"
+                aria-describedby="hint-decision error-decision counter-decision"
+                maxlength="2000"
+              ></textarea>
+              <div class="field__footer">
+                <span
+                  id="error-decision"
+                  class="field__error"
+                  role="alert"
+                  aria-live="polite"
+                ></span>
+                <span
+                  id="counter-decision"
+                  class="field__counter"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  >0 / 2000</span
+                >
+              </div>
+            </div>
+
+            <!-- Reasoning -->
+            <div class="field">
+              <label class="field__label" for="field-reasoning">
+                What is your current reasoning?
+                <span class="field__required" aria-label="required">*</span>
+              </label>
+              <p class="field__hint" id="hint-reasoning">
+                Explain why you're leaning the way you are. What factors matter
+                to you?
+              </p>
+              <textarea
+                id="field-reasoning"
+                class="field__textarea"
+                name="reasoning"
+                rows="5"
+                placeholder="Share your current thinking and what's influencing you…"
+                aria-required="true"
+                aria-invalid="false"
+                aria-describedby="hint-reasoning error-reasoning counter-reasoning"
+                maxlength="2000"
+              ></textarea>
+              <div class="field__footer">
+                <span
+                  id="error-reasoning"
+                  class="field__error"
+                  role="alert"
+                  aria-live="polite"
+                ></span>
+                <span
+                  id="counter-reasoning"
+                  class="field__counter"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  >0 / 2000</span
+                >
+              </div>
+            </div>
+
+            <!-- Basis -->
+            <div class="field">
+              <label class="field__label" for="field-basis">
+                What information are you basing this on?
+                <span class="field__optional">(optional)</span>
+              </label>
+              <p class="field__hint" id="hint-basis">
+                What sources, data, or conversations have shaped your view?
+              </p>
+              <textarea
+                id="field-basis"
+                class="field__textarea"
+                name="basis"
+                rows="3"
+                placeholder="E.g., salary research, advice from a friend, company reviews…"
+                aria-describedby="hint-basis counter-basis"
+                maxlength="2000"
+              ></textarea>
+              <div class="field__footer">
+                <span
+                  id="counter-basis"
+                  class="field__counter"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  >0 / 2000</span
+                >
+              </div>
+            </div>
+
+            <!-- Uncertainty -->
+            <div class="field">
+              <label class="field__label" for="field-uncertainty">
+                What are you uncertain about?
+                <span class="field__optional">(optional)</span>
+              </label>
+              <p class="field__hint" id="hint-uncertainty">
+                Any doubts, gaps in knowledge, or things you can't predict?
+              </p>
+              <textarea
+                id="field-uncertainty"
+                class="field__textarea"
+                name="uncertainty"
+                rows="2"
+                placeholder="E.g., I'm unsure how the team culture actually is…"
+                aria-describedby="hint-uncertainty counter-uncertainty"
+                maxlength="2000"
+              ></textarea>
+              <div class="field__footer">
+                <span
+                  id="counter-uncertainty"
+                  class="field__counter"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  >0 / 2000</span
+                >
+              </div>
+            </div>
+
+            <!-- Error banner -->
+            <div
+              id="error-banner"
+              class="error-banner"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+              tabindex="-1"
+            >
+              <span class="error-banner__icon" aria-hidden="true">⚠</span>
+              <div>
+                <span id="error-banner-text" class="error-banner__text"></span>
+                <button
+                  id="btn-retry"
+                  class="error-banner__retry"
+                  type="button"
+                  aria-label="Retry the analysis"
+                >
+                  Try again
+                </button>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form__footer">
+              <button
+                id="btn-submit"
+                class="btn btn--primary btn--lg"
+                type="submit"
+                aria-label="Analyse my reasoning for blind spots and assumptions"
+              >
+                <span
+                  id="btn-submit-spinner"
+                  class="btn__spinner"
+                  aria-hidden="true"
+                  style="display: none"
+                ></span>
+                <span id="btn-submit-text" class="btn__text"
+                  >X-Ray My Reasoning</span
+                >
+              </button>
+              <p class="hero__disclaimer">
+                Your input is sent to the configured AI provider for this
+                analysis and is not saved by this app.
+              </p>
+            </div>
+          </form>
+
+          <!-- Loading overlay -->
+          <div
+            id="loading-overlay"
+            class="loading-overlay"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            aria-label="Analysing your reasoning"
             aria-hidden="true"
-            style="display:none"
-          ></span>
-          <span id="btn-submit-text" class="btn__text">X-Ray My Reasoning</span>
-        </button>
-        <p class="hero__disclaimer">
-          Your input is only used for this analysis. Nothing is stored beyond your session.
+          >
+            <div class="loading-overlay__spinner" aria-hidden="true"></div>
+            <p class="loading-overlay__title">Analysing your reasoning…</p>
+            <p class="loading-overlay__subtitle">
+              Looking for blind spots, assumptions, and what might be missing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- SECTION 3 — REASONING X-RAY                                    -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <section
+        id="xray-section"
+        class="section xray-section"
+        aria-labelledby="xray-heading"
+      >
+        <div class="container">
+          <div class="xray-header" id="xray-header">
+            <div
+              class="xray-badge"
+              aria-label="Reasoning X-Ray analysis result"
+            >
+              <span aria-hidden="true">◎</span>
+              Reasoning X-Ray
+            </div>
+            <h2
+              class="section-title"
+              id="xray-heading"
+              tabindex="-1"
+              aria-label="Reasoning X-Ray — analysis results below"
+            >
+              Here's what your reasoning may be missing
+            </h2>
+            <p
+              class="section-subtitle"
+              id="xray-decision-summary"
+              style="font-style: italic"
+            ></p>
+          </div>
+
+          <!-- Cards rendered here by render.js -->
+          <div
+            id="xray-container"
+            aria-label="Reasoning analysis results"
+          ></div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <!-- SECTION 4 — REFLECTION                                         -->
+      <!-- ═══════════════════════════════════════════════════════════════ -->
+      <section
+        id="reflection-section"
+        class="section reflection-section"
+        aria-labelledby="reflection-heading"
+      >
+        <div class="container container--md">
+          <div class="xray-header">
+            <div class="section-label" aria-hidden="true">Reflection</div>
+            <h2 class="section-title" id="reflection-heading">Going deeper</h2>
+            <p class="section-subtitle">
+              Questions worth asking, information worth finding, and what could
+              genuinely change this reasoning.
+            </p>
+          </div>
+
+          <!-- Content rendered here by render.js -->
+          <div id="reflection-container"></div>
+
+          <!-- CTA to re-analyze -->
+          <div style="text-align: center; margin-top: var(--space-12)">
+            <button
+              id="btn-analyze-again"
+              class="btn btn--ghost"
+              type="button"
+              aria-label="Go back and analyse a different decision"
+            >
+              ← Analyse a different decision
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- FOOTER                                                         -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <p class="footer__text">
+          Blindspot — A reasoning analysis tool. Not a decision-maker.
         </p>
       </div>
+    </footer>
 
-    </form>
-
-    <!-- Loading overlay -->
-    <div
-      id="loading-overlay"
-      class="loading-overlay"
-      aria-live="polite"
-      aria-atomic="true"
-      aria-label="Analysing your reasoning"
-    >
-      <div class="loading-overlay__spinner" aria-hidden="true"></div>
-      <p class="loading-overlay__title">Analysing your reasoning…</p>
-      <p class="loading-overlay__subtitle">
-        Looking for blind spots, assumptions, and what might be missing.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- SECTION 3 — REASONING X-RAY                                    -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<section
-  id="xray-section"
-  class="section xray-section"
-  aria-labelledby="xray-heading"
->
-  <div class="container">
-
-    <div class="xray-header" id="xray-header">
-      <div class="xray-badge" aria-label="Reasoning X-Ray analysis result">
-        <span aria-hidden="true">◎</span>
-        Reasoning X-Ray
-      </div>
-      <h2
-        class="section-title"
-        id="xray-heading"
-        tabindex="-1"
-        aria-label="Reasoning X-Ray — analysis results below"
-      >
-        Here's what your reasoning may be missing
-      </h2>
-      <p class="section-subtitle" id="xray-decision-summary" style="font-style:italic;"></p>
-    </div>
-
-    <!-- Cards rendered here by render.js -->
-    <div id="xray-container" aria-label="Reasoning analysis results"></div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- SECTION 4 — REFLECTION                                         -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<section
-  id="reflection-section"
-  class="section reflection-section"
-  aria-labelledby="reflection-heading"
->
-  <div class="container container--md">
-
-    <div class="xray-header">
-      <div class="section-label" aria-hidden="true">Reflection</div>
-      <h2 class="section-title" id="reflection-heading">
-        Going deeper
-      </h2>
-      <p class="section-subtitle">
-        Questions worth asking, information worth finding, and what could genuinely change this reasoning.
-      </p>
-    </div>
-
-    <!-- Content rendered here by render.js -->
-    <div id="reflection-container"></div>
-
-    <!-- CTA to re-analyze -->
-    <div style="text-align:center; margin-top: var(--space-12);">
-      <button
-        id="btn-analyze-again"
-        class="btn btn--ghost"
-        type="button"
-        aria-label="Go back and analyse a different decision"
-      >
-        ← Analyse a different decision
-      </button>
-    </div>
-
-  </div>
-</section>
-
-</main>
-
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- FOOTER                                                         -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <p class="footer__text">
-      Blindspot — A reasoning analysis tool. Not a decision-maker.
-    </p>
-  </div>
-</footer>
-
-<!-- JS — ES modules, loaded after body -->
-<script type="module" src="/js/app.js"></script>
-
-</body>
+    <!-- JS — ES modules, loaded after body -->
+    <script type="module" src="/js/app.js"></script>
+  </body>
 </html>

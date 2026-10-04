@@ -8,6 +8,21 @@ body {
   line-height: var(--leading-normal);
 }
 
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -4rem;
+  z-index: 200;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-text-primary);
+  color: var(--color-text-inverted);
+  border-radius: var(--radius-md);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
 /* ── Container ────────────────────────────────────────────────── */
 .container {
   width: 100%;
@@ -38,7 +53,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(248, 247, 244, 0.90);
+  background-color: rgba(248, 247, 244, 0.9);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: var(--border-width) solid var(--color-border);
@@ -207,7 +222,7 @@ body {
 
 .section-label::before,
 .section-label::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
   background: var(--color-border);

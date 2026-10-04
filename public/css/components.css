@@ -72,7 +72,7 @@
   display: none;
   width: 16px;
   height: 16px;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-top-color: white;
   border-radius: var(--radius-full);
   animation: spin 0.7s linear infinite;
@@ -136,7 +136,9 @@
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   resize: vertical;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
   min-height: 80px;
 }
 
@@ -188,7 +190,7 @@
   gap: var(--space-3);
   padding: var(--space-4) var(--space-5);
   background: var(--color-error-bg);
-  border: var(--border-width) solid #FECACA;
+  border: var(--border-width) solid #fecaca;
   border-radius: var(--radius-md);
   margin-top: var(--space-4);
 }
@@ -219,6 +221,11 @@
   padding: 0;
   margin-top: var(--space-1);
   display: block;
+}
+
+.error-banner:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 /* ── Loading Overlay ──────────────────────────────────────────── */
@@ -257,13 +264,25 @@
   max-width: 280px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ── Question Chip ────────────────────────────────────────────── */
 .question-chip {
   display: inline-flex;
   align-items: flex-start;
   gap: var(--space-2);
   background: var(--chip-bg, var(--color-accent-light));
-  border: var(--border-width) solid var(--chip-border, var(--color-accent-subtle));
+  border: var(--border-width) solid
+    var(--chip-border, var(--color-accent-subtle));
   border-radius: var(--radius-sm);
   padding: var(--space-2) var(--space-3);
   font-size: var(--text-sm);
@@ -472,5 +491,7 @@
 
 /* ── Spin keyframe ────────────────────────────────────────────── */
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
