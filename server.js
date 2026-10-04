@@ -453,7 +453,11 @@ async function startServer() {
   });
 }
 
-startServer().catch((error) => {
-  console.error(`Could not start the server: ${error.message}`);
-  process.exitCode = 1;
-});
+if (require.main === module) {
+  startServer().catch((error) => {
+    console.error(`Could not start the server: ${error.message}`);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = { app, validateInput, parseJsonResponse };

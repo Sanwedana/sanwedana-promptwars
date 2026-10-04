@@ -64,6 +64,14 @@ server.js         Express proxy — keeps API key server-side
 
 ## Test Scenarios
 
+Run the automated server and security regression suite with:
+
+```bash
+npm test
+```
+
+The suite covers health checks, security headers, required-field validation, type validation, content-type and method handling, oversized input rejection, provider JSON parsing, and frontend secret non-exposure.
+
 Run these manually in the browser to verify:
 
 | Test           | Decision                           | Expected                                           |
