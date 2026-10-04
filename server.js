@@ -430,7 +430,7 @@ function hasExistingPromptWarsServer() {
 async function startServer() {
   if (await hasExistingPromptWarsServer()) {
     console.log(
-      `PromptWars is already running at http://localhost:${PORT}. No second server was started.`,
+      `PromptWars is already running at http://localhost:${PORT}. No second server was started; use the existing server.`,
     );
     return;
   }
