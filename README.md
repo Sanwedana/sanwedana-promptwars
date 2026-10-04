@@ -82,4 +82,4 @@ Run these manually in the browser to verify:
 - User input sanitised and length-limited on the server
 - Rate limiting: 15 requests/minute per IP
 - Gemini primary model: `gemini-3.8-flash`
-- NVIDIA fallback model: `nvidia/nemotron-3-super-120b-a12b`
+- NVIDIA fallback model: `openai/gpt-oss-20b`

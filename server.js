@@ -118,6 +118,10 @@ function buildUserPrompt({ decision, reasoning, basis, uncertainty }) {
 }
 
 function parseJsonResponse(text, providerName) {
+  if (typeof text !== "string") {
+    throw new Error(`${providerName} returned invalid JSON.`);
+  }
+
   try {
     return JSON.parse(text);
   } catch {
@@ -127,6 +131,23 @@ function parseJsonResponse(text, providerName) {
         return JSON.parse(match[1]);
       } catch {
         // Fall through to the provider-specific error below.
+      }
+    }
+
+    // Some models add a short explanation before or after the JSON despite
+    // requesting JSON mode. Try each possible JSON object/array boundary.
+    const starts = [];
+    for (let index = 0; index < text.length; index += 1) {
+      if (text[index] === "{" || text[index] === "[") starts.push(index);
+    }
+    for (const start of starts) {
+      for (let end = text.length - 1; end > start; end -= 1) {
+        if (text[end] !== "}" && text[end] !== "]") continue;
+        try {
+          return JSON.parse(text.slice(start, end + 1));
+        } catch {
+          // Continue searching for the next complete JSON value.
+        }
       }
     }
     throw new Error(`${providerName} returned invalid JSON.`);
@@ -176,7 +197,7 @@ async function callNvidiaFallback(userPrompt) {
           Authorization: `Bearer ${nvidiaKey}`,
         },
         body: JSON.stringify({
-          model: "nvidia/nemotron-3-super-120b-a12b",
+          model: "openai/gpt-oss-20b",
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: userPrompt },
