@@ -1,0 +1,108 @@
+/* tokens.css — design system variables */
+
+:root {
+  /* ── Typography ──────────────────────────────── */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.875rem;  /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.25rem;   /* 20px */
+  --text-2xl:  1.5rem;    /* 24px */
+  --text-3xl:  1.875rem;  /* 30px */
+  --text-4xl:  2.25rem;   /* 36px */
+  --text-5xl:  3rem;      /* 48px */
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight:  1.25;
+  --leading-snug:   1.375;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  /* ── Color Palette ───────────────────────────── */
+  /* Base */
+  --color-white:    #FFFFFF;
+  --color-bg:       #F8F7F4;     /* warm off-white */
+  --color-surface:  #FFFFFF;
+  --color-border:   #E8E5DF;
+  --color-border-strong: #D0CCC4;
+
+  /* Text */
+  --color-text-primary:   #1A1916;
+  --color-text-secondary: #5C5850;
+  --color-text-muted:     #9C9890;
+  --color-text-inverted:  #FFFFFF;
+
+  /* Accent — singular: warm indigo */
+  --color-accent:         #4F46E5;  /* indigo-600 */
+  --color-accent-hover:   #4338CA;  /* indigo-700 */
+  --color-accent-light:   #EEF2FF;  /* indigo-50 */
+  --color-accent-subtle:  #E0E7FF;  /* indigo-100 */
+
+  /* Category colors — muted, not garish */
+  --color-blind-spot:     #D97706;  /* amber */
+  --color-blind-spot-bg:  #FFFBEB;
+  --color-assumption:     #6366F1;  /* indigo */
+  --color-assumption-bg:  #EEF2FF;
+  --color-missing:        #0D9488;  /* teal */
+  --color-missing-bg:     #F0FDFA;
+  --color-tradeoff:       #DC2626;  /* red */
+  --color-tradeoff-bg:    #FFF1F2;
+  --color-contradiction:  #EA580C;  /* orange */
+  --color-contradiction-bg: #FFF7ED;
+  --color-pattern:        #64748B;  /* slate */
+  --color-pattern-bg:     #F8FAFC;
+
+  /* Status */
+  --color-error:          #DC2626;
+  --color-error-bg:       #FEF2F2;
+  --color-success:        #16A34A;
+
+  /* ── Spacing ─────────────────────────────────── */
+  --space-1:   0.25rem;
+  --space-2:   0.5rem;
+  --space-3:   0.75rem;
+  --space-4:   1rem;
+  --space-5:   1.25rem;
+  --space-6:   1.5rem;
+  --space-8:   2rem;
+  --space-10:  2.5rem;
+  --space-12:  3rem;
+  --space-16:  4rem;
+  --space-20:  5rem;
+  --space-24:  6rem;
+  --space-32:  8rem;
+
+  /* ── Borders & Radius ────────────────────────── */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-full: 9999px;
+
+  --border-width: 1px;
+
+  /* ── Shadows ─────────────────────────────────── */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.06);
+  --shadow-sm:  0 1px 4px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04);
+  --shadow-focus: 0 0 0 3px rgba(79, 70, 229, 0.25);
+
+  /* ── Transitions ─────────────────────────────── */
+  --transition-fast:   120ms ease;
+  --transition-base:   200ms ease;
+  --transition-slow:   350ms ease;
+  --transition-spring: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Layout ──────────────────────────────────── */
+  --container-max:  1120px;
+  --container-sm:   640px;
+  --container-md:   800px;
+}

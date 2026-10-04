@@ -1,0 +1,251 @@
+/* xray.css — Reasoning X-Ray visual layout */
+
+/* ── X-Ray Grid ───────────────────────────────────────────────── */
+.xray-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+/* Full-width rows */
+.xray-grid__full {
+  grid-column: 1 / -1;
+}
+
+/* ── Category Panel ───────────────────────────────────────────── */
+.xray-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.xray-panel__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-width) solid var(--color-border);
+  margin-bottom: var(--space-1);
+}
+
+.xray-panel__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--panel-icon-bg);
+  font-size: var(--text-sm);
+  flex-shrink: 0;
+}
+
+.xray-panel__title {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--panel-color);
+}
+
+.xray-panel__count {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+/* ── Finding Card ─────────────────────────────────────────────── */
+.finding-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-left: 3px solid var(--card-accent);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+
+  /* entrance animation */
+  opacity: 0;
+  transform: translateY(8px);
+  animation: card-reveal var(--transition-slow) ease forwards;
+  animation-delay: var(--card-delay, 0ms);
+}
+
+.finding-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.finding-card__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--leading-snug);
+}
+
+.finding-card__explanation {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.finding-card__why {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.finding-card__why-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.finding-card__why-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Category-specific variables ──────────────────────────────── */
+
+/* Blind Spots */
+.xray-panel--blind-spot {
+  --panel-color: var(--color-blind-spot);
+  --panel-icon-bg: var(--color-blind-spot-bg);
+  --card-accent: var(--color-blind-spot);
+  --chip-bg: var(--color-blind-spot-bg);
+  --chip-border: #FDE68A;
+  --chip-color: #92400E;
+}
+
+/* Assumptions */
+.xray-panel--assumption {
+  --panel-color: var(--color-assumption);
+  --panel-icon-bg: var(--color-assumption-bg);
+  --card-accent: var(--color-assumption);
+  --chip-bg: var(--color-assumption-bg);
+  --chip-border: var(--color-accent-subtle);
+  --chip-color: #3730A3;
+}
+
+/* Missing Information */
+.xray-panel--missing {
+  --panel-color: var(--color-missing);
+  --panel-icon-bg: var(--color-missing-bg);
+  --card-accent: var(--color-missing);
+  --chip-bg: var(--color-missing-bg);
+  --chip-border: #99F6E4;
+  --chip-color: #0F766E;
+}
+
+/* Trade-offs */
+.xray-panel--tradeoff {
+  --panel-color: var(--color-tradeoff);
+  --panel-icon-bg: var(--color-tradeoff-bg);
+  --card-accent: var(--color-tradeoff);
+  --chip-bg: var(--color-tradeoff-bg);
+  --chip-border: #FECDD3;
+  --chip-color: #991B1B;
+}
+
+/* Contradictions */
+.xray-panel--contradiction {
+  --panel-color: var(--color-contradiction);
+  --panel-icon-bg: var(--color-contradiction-bg);
+  --card-accent: var(--color-contradiction);
+  --chip-bg: var(--color-contradiction-bg);
+  --chip-border: #FED7AA;
+  --chip-color: #9A3412;
+}
+
+/* Reasoning Patterns */
+.xray-panel--pattern {
+  --panel-color: var(--color-pattern);
+  --panel-icon-bg: var(--color-pattern-bg);
+  --card-accent: var(--color-pattern);
+  --chip-bg: var(--color-pattern-bg);
+  --chip-border: var(--color-border);
+  --chip-color: var(--color-text-secondary);
+}
+
+/* ── Reasoning Pattern Card (no question chip) ────────────────── */
+.pattern-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-left: 3px solid var(--color-pattern);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xs);
+
+  opacity: 0;
+  transform: translateY(8px);
+  animation: card-reveal var(--transition-slow) ease forwards;
+  animation-delay: var(--card-delay, 0ms);
+}
+
+.pattern-card__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-pattern);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.pattern-card__tag {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+.pattern-card__explanation {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.pattern-card__why {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ── Entrance animation ───────────────────────────────────────── */
+@keyframes card-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .xray-grid {
+    grid-template-columns: 1fr;
+  }
+  .xray-grid__full {
+    grid-column: 1;
+  }
+}
