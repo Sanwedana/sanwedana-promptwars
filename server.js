@@ -1,10 +1,11 @@
 require("dotenv").config();
 const express = require("express");
+const http = require("http");
 const path = require("path");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 3001;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY?.trim();
 const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY?.trim();
 const MAX_INPUT_LENGTH = 2000;
@@ -390,6 +391,69 @@ app.use((err, _req, res, _next) => {
 });
 
 // ─── Start ────────────────────────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`Blindspot server running → http://localhost:${PORT}`);
+function hasExistingPromptWarsServer() {
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = (isRunning) => {
+      if (settled) return;
+      settled = true;
+      resolve(isRunning);
+    };
+
+    const request = http.get(
+      {
+        host: "127.0.0.1",
+        port: PORT,
+        path: "/health",
+        timeout: 800,
+      },
+      (response) => {
+        let body = "";
+        response.setEncoding("utf8");
+        response.on("data", (chunk) => {
+          body += chunk;
+        });
+        response.on("end", () => {
+          finish(
+            response.statusCode === 200 &&
+              body.trim() === JSON.stringify({ status: "ok" }),
+          );
+        });
+      },
+    );
+
+    request.on("timeout", () => request.destroy());
+    request.on("error", () => finish(false));
+  });
+}
+
+async function startServer() {
+  if (await hasExistingPromptWarsServer()) {
+    console.log(
+      `PromptWars is already running at http://localhost:${PORT}. No second server was started.`,
+    );
+    return;
+  }
+
+  const server = app.listen(PORT, () => {
+    console.log(`Blindspot server running → http://localhost:${PORT}`);
+  });
+
+  server.on("error", (error) => {
+    if (error.code === "EADDRINUSE") {
+      console.error(
+        `Port ${PORT} is already in use. Stop the existing PromptWars server or configure PORT in .env.`,
+      );
+    } else if (error.code === "EACCES") {
+      console.error(`Permission denied while binding to port ${PORT}.`);
+    } else {
+      console.error(`Could not start the server: ${error.message}`);
+    }
+    process.exitCode = 1;
+  });
+}
+
+startServer().catch((error) => {
+  console.error(`Could not start the server: ${error.message}`);
+  process.exitCode = 1;
 });
